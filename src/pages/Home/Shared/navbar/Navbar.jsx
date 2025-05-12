@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import user from '../../../../assets/user.png'
+import { Authconetext } from '../../../../provider/Authprovider';
 
 const Navbar = () => {
+
+  const { user, logout } = useContext(Authconetext);
+
+  const handlesignout = () =>
+  {
+
+    logout()
+    .then()
+    .catch()
+
+  }
 
     const navlinks = 
     <>
     
-    <li><NavLink> Home </NavLink></li>
+    <li><NavLink to="/"> Home </NavLink></li>
     <li><NavLink> About </NavLink></li>
     <li><NavLink> Career</NavLink></li>
+     <li><NavLink to="/login">Login</NavLink></li>
+     <li><NavLink to="/register">Register</NavLink></li>
     
     </>
     return (
@@ -48,7 +62,18 @@ const Navbar = () => {
   <div className="navbar-end">
      <div className='flex gap-4'>
      <img className='bg-black'src={user} alt="Imported photo" />
-     <a className="btn">Button</a>
+
+     {
+      user ?
+
+      <button onClick={handlesignout} className='btn'>Signout</button>
+
+      :
+
+<NavLink className="btn" to='/login' >Login </NavLink>
+     }
+      
+      {/* <NavLink className="btn" to='/login' >Login </NavLink> */}
      </div>
   </div>
 </div>
