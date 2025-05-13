@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./Home/Shared/navbar/Navbar";
 import { useContext } from "react";
 import { Authconetext } from "../provider/Authprovider";
@@ -7,6 +7,10 @@ import { Authconetext } from "../provider/Authprovider";
 
 const Login = () => {
     const {signin} = useContext(Authconetext)
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('location in log in page',location)
 
      const handlelogin = e =>
      {
@@ -21,6 +25,8 @@ const Login = () => {
        .then(result =>
        {
         console.log(result.user)
+
+        navigate (location?.state ? location.state : '/')
        }
        )
        .catch(error =>
