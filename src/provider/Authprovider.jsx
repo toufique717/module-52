@@ -9,20 +9,24 @@ import app from "../firebase/firebase.config";
 const Authprovider = ({children}) => {
 
     const [user,setuser] = useState(null);
+    const [loading, setloading] = useState(true);
 
     const createuser = (email,password) =>
     {
+        setloading(true);
         return createUserWithEmailAndPassword(auth,email,password)
     }
 
     const signin = (email,password) =>
     {
+        setloading(true);
         return signInWithEmailAndPassword(auth,email,password);
     }
 
 
     const logout = ()=>
     {
+        setloading(true);
         return signOut(auth);
     }
 
@@ -32,6 +36,7 @@ const Authprovider = ({children}) => {
             {
                 console.log('user in auth Statechanged',currentuser);
                 setuser(currentuser)
+                setloading(true);
             }
             );
          return ()=>
@@ -43,6 +48,7 @@ const Authprovider = ({children}) => {
 
     const authinfo = {
         user,
+        loading,
         createuser,
         signin,
         logout
