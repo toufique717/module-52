@@ -10,11 +10,11 @@ console.log('inside firebase config',import.meta.env.VITE_PASS)
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITe_apiKey,
-  authDomain: import.meta.env.,
-  projectId: import.meta.env. ,
-  storageBucket:import.meta.env.  ,
-  messagingSenderId:import.meta.env.  ,
-  appId:   ,
+  authDomain: import.meta.env.VITe_authDomain ,
+  projectId: import.meta.env.VITe_projectId  ,
+  storageBucket:import.meta.env.VITe_storageBucket  ,
+  messagingSenderId:import.meta.env.VITe_messagingSenderId  ,
+  appId:import.meta.env.VITe_appId   ,
 };
 
 // Initialize Firebase
